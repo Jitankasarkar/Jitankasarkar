@@ -11,7 +11,7 @@
 
 - 📫 How to reach me **jitankasarkar2017@gmail.com**
 
-- ⚡ Fun fact **I think I am an alien**
+- ⚡ Fun fact **I think we are in a matrix**
 
 <h3 align="left">Connect with me:</h3>
 <p align="left">
