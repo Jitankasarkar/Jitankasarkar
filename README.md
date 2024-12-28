@@ -4,11 +4,11 @@
 
 <img align="right" alt="Coding" width="400" height="220" src="https://ampron.eu/wp-content/uploads/2019/01/code-developer.gif">
 
-- 🔭 I’m currently working on **frontend development**
+- 🔭 A passionate **frontend developer**
 
-- 🌱 I’m currently learning **JavaScript**
+- 🌱 Currently expanding my knowledge in backend
 
-- 📨 How to reach me **jitankasarkar2017@gmail.com**
+- 📨 Reach me **jitankasarkar2017@gmail.com**
 
 - ⚡ Fun fact **I think we are in a matrix**
 
