@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 300">
+<rect width="420" height="300" rx="18" fill="#090c10"/>
+<rect x="25" y="28" width="370" height="235" rx="12" fill="#11161d" stroke="#303640"/>
+<circle cx="48" cy="49" r="5" fill="#c9ced6"/><circle cx="66" cy="49" r="5" fill="#8f969f"/><circle cx="84" cy="49" r="5" fill="#5f6670"/>
+<text x="48" y="88" fill="#8f98a3" font-family="monospace" font-size="15">$ whoami</text>
+<text x="48" y="118" fill="#f3f4f6" font-family="monospace" font-size="19">jitanka@github</text>
+<text x="48" y="157" fill="#8f98a3" font-family="monospace" font-size="15">$ ./build</text>
+<text x="48" y="187" fill="#d7dbe0" font-family="monospace" font-size="16">building ideas...</text>
+<text x="48" y="216" fill="#f3f4f6" font-family="monospace" font-size="16">████████████░░  82%</text>
+<text x="48" y="242" fill="#8f98a3" font-family="monospace" font-size="14">status: learning / shipping</text>
+</svg>

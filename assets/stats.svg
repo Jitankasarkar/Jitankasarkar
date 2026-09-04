@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 240">
+<rect width="900" height="240" rx="16" fill="#0d1117" stroke="#30363d"/>
+<g font-family="Arial, sans-serif" text-anchor="middle">
+<g transform="translate(0,0)">
+<text x="112" y="65" fill="#f0f6fc" font-size="38" font-weight="700">16</text>
+<text x="112" y="100" fill="#8b949e" font-size="15">Repositories</text>
+<line x1="225" y1="40" x2="225" y2="200" stroke="#30363d"/>
+</g>
+<g>
+<text x="337" y="65" fill="#f0f6fc" font-size="38" font-weight="700">4</text>
+<text x="337" y="100" fill="#8b949e" font-size="15">Stars</text>
+<line x1="450" y1="40" x2="450" y2="200" stroke="#30363d"/>
+</g>
+<g>
+<text x="562" y="65" fill="#f0f6fc" font-size="38" font-weight="700">3</text>
+<text x="562" y="100" fill="#8b949e" font-size="15">Followers</text>
+<line x1="675" y1="40" x2="675" y2="200" stroke="#30363d"/>
+</g>
+<g>
+<text x="787" y="65" fill="#f0f6fc" font-size="38" font-weight="700">2</text>
+<text x="787" y="100" fill="#8b949e" font-size="15">Following</text>
+</g>
+<text x="450" y="175" fill="#8b949e" font-size="13">Public GitHub profile snapshot</text>
+<text x="450" y="197" fill="#6e7681" font-size="12">Updated from the profile data available on September 4, 2026</text>
+</g></svg>
