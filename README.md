@@ -1,54 +1,24 @@
-<!-- ========================================================= -->
-<!--                       HERO SECTION                        -->
-<!-- ========================================================= -->
-
 <div align="center">
 
-<img
-  src="https://capsule-render.vercel.app/api?type=waving&height=180&section=header&text=Welcome%20to%20Jitanka's%20Github&fontSize=28&fontColor=ffffff&animation=fadeIn&fontAlignY=40&color=0d1117"
-  width="100%"
-/>
-
-</div>
-
-<p align="center">
-  <img
-    src="https://readme-typing-svg.demolab.com?font=Courier+Prime&size=18&duration=3500&pause=1000&color=FFFFFF&center=true&vCenter=true&width=500&height=45&lines=%3C%2F%3E+Building+things+with+code;%3C%2F%3E+Exploring+AI+%26+technology"
-  />
-</p>
-
-
-<!-- ========================================================= -->
-<!--                      NAVIGATION                           -->
-<!-- ========================================================= -->
-
-<p align="center">
-
-<a href="#about-me">
-<img src="https://img.shields.io/badge/%20ABOUT%20ME-0d1117?style=for-the-badge&logoColor=white"/>
-</a>
-
-<a href="#technologies">
-<img src="https://img.shields.io/badge/%20TECHNOLOGIES-0d1117?style=for-the-badge&logoColor=white"/>
-</a>
-
-<a href="#statistics">
-<img src="https://img.shields.io/badge/%20STATISTICS-0d1117?style=for-the-badge&logoColor=white"/>
-</a>
-
-<a href="mailto:jitankasarkar2017@gmail.com">
-<img src="https://img.shields.io/badge/%20CONTACT-0d1117?style=for-the-badge&logoColor=white"/>
-</a>
-
-</p>
-
+<img src="./assets/hero.svg" width="100%" alt="Welcome to Jitanka's GitHub">
 
 <br>
 
+<img src="https://readme-typing-svg.demolab.com?font=Courier+Prime&size=18&duration=1800&pause=900&color=FFFFFF&center=true&vCenter=true&width=500&height=40&lines=%3C%2F%3E+Build;%3C%2F%3E+Learn;%3C%2F%3E+Experiment;%3C%2F%3E+Repeat." alt="Typing">
 
-<!-- ========================================================= -->
-<!--                       ABOUT ME                            -->
-<!-- ========================================================= -->
+<br>
+
+<a href="#about-me">ABOUT ME</a>
+&nbsp;&nbsp;•&nbsp;&nbsp;
+<a href="#technologies">TECHNOLOGIES</a>
+&nbsp;&nbsp;•&nbsp;&nbsp;
+<a href="#statistics">STATISTICS</a>
+&nbsp;&nbsp;•&nbsp;&nbsp;
+<a href="#contact">CONTACT</a>
+
+</div>
+
+<br>
 
 <h2 align="center">⌘ About me</h2>
 
@@ -56,54 +26,49 @@
 
 <table>
 <tr>
-
-<td width="68%" valign="middle">
+<td width="64%" valign="middle">
 
 <p align="center">
 
-Hello there! I'm <b>Jitanka Sarkar</b> — a developer who enjoys
-turning ideas into useful software.
+<b>Hey! I'm Jitanka 👋</b>
 
 <br><br>
 
-I like working across <b>frontend, backend and AI</b>, while
-constantly learning how different technologies come together
-to build better applications.
+A developer who enjoys turning ideas into useful software
+and understanding how things work under the hood.
 
 <br><br>
 
-Currently exploring:
+I like exploring <b>web, mobile, backend and AI</b>
+and constantly experimenting with new technologies.
 
-<br>
+<br><br>
 
-<b>Full-Stack Development</b> ·
-<b>Artificial Intelligence</b> ·
-<b>Machine Learning</b> ·
-<b>LLMs</b>
+<code>Full-Stack</code>
+&nbsp;
+<code>AI / ML</code>
+&nbsp;
+<code>LLMs</code>
+&nbsp;
+<code>Backend</code>
+
+<br><br>
+
+<i>There is always something new to build.</i>
 
 </p>
 
 </td>
 
-<td width="32%" align="center">
+<td width="36%" align="center">
 
-<img
-  src="https://media.giphy.com/media/qgQUggAC3Pfv687qPC/giphy.gif"
-  width="210px"
-/>
+<img src="./assets/coding.svg" width="240" alt="Coding terminal illustration">
 
 </td>
-
 </tr>
 </table>
 
-
 <br>
-
-
-<!-- ========================================================= -->
-<!--                     TECHNOLOGIES                          -->
-<!-- ========================================================= -->
 
 <h2 align="center">⚙ Technologies</h2>
 
@@ -111,107 +76,74 @@ Currently exploring:
 
 <p align="center">
 
-<img src="https://img.shields.io/badge/Java-111111?style=for-the-badge&logo=openjdk&logoColor=white"/>
-<img src="https://img.shields.io/badge/Python-111111?style=for-the-badge&logo=python&logoColor=white"/>
-<img src="https://img.shields.io/badge/C-111111?style=for-the-badge&logo=c&logoColor=white"/>
-<img src="https://img.shields.io/badge/JavaScript-111111?style=for-the-badge&logo=javascript&logoColor=white"/>
+<img src="https://skillicons.dev/icons?i=java,python,c,js,react,flutter,nodejs,express&theme=dark&perline=8" alt="Languages and frameworks">
 
-<br>
+<br><br>
 
-<img src="https://img.shields.io/badge/React-111111?style=for-the-badge&logo=react&logoColor=white"/>
-<img src="https://img.shields.io/badge/Flutter-111111?style=for-the-badge&logo=flutter&logoColor=white"/>
-<img src="https://img.shields.io/badge/Node.js-111111?style=for-the-badge&logo=node.js&logoColor=white"/>
-<img src="https://img.shields.io/badge/Express.js-111111?style=for-the-badge&logo=express&logoColor=white"/>
-
-<br>
-
-<img src="https://img.shields.io/badge/Firebase-111111?style=for-the-badge&logo=firebase&logoColor=white"/>
-<img src="https://img.shields.io/badge/MySQL-111111?style=for-the-badge&logo=mysql&logoColor=white"/>
-<img src="https://img.shields.io/badge/Git-111111?style=for-the-badge&logo=git&logoColor=white"/>
-
-<br>
-
-<img src="https://img.shields.io/badge/PyTorch-111111?style=for-the-badge&logo=pytorch&logoColor=white"/>
-<img src="https://img.shields.io/badge/OpenCV-111111?style=for-the-badge&logo=opencv&logoColor=white"/>
-<img src="https://img.shields.io/badge/scikit--learn-111111?style=for-the-badge&logo=scikit-learn&logoColor=white"/>
-<img src="https://img.shields.io/badge/LangChain-111111?style=for-the-badge&logoColor=white"/>
+<img src="https://skillicons.dev/icons?i=firebase,mysql,git,github,pytorch,opencv,vscode,linux&theme=dark&perline=8" alt="Tools and platforms">
 
 </p>
 
-
 <br>
-
-
-<!-- ========================================================= -->
-<!--                      STATISTICS                           -->
-<!-- ========================================================= -->
 
 <h2 align="center">⌁ Statistics</h2>
 
 <hr>
 
 <p align="center">
-
-<img
-  src="https://github-readme-stats.vercel.app/api?username=YOUR_GITHUB_USERNAME&show_icons=true&hide_border=true&bg_color=0d1117&title_color=ffffff&text_color=ffffff&icon_color=ffffff&rank_icon=github"
-  height="170"
-/>
-
-<img
-  src="https://github-readme-streak-stats.herokuapp.com/?user=YOUR_GITHUB_USERNAME&theme=dark&hide_border=true&background=0d1117"
-  height="170"
-/>
-
+<img src="./assets/stats.svg" width="96%" alt="GitHub profile statistics">
 </p>
-
 
 <br>
 
+<p align="center">
+<img src="./assets/activity.svg" width="96%" alt="Coding activity visualization">
+</p>
 
-<!-- ========================================================= -->
-<!--                  CONTRIBUTION GRAPH                       -->
-<!-- ========================================================= -->
+<br>
+
+<h2 align="center">⌁ GitHub presence</h2>
+
+<hr>
 
 <p align="center">
 
-<img
-  src="https://github-readme-activity-graph.vercel.app/graph?username=YOUR_GITHUB_USERNAME&bg_color=0d1117&color=ffffff&line=ffffff&point=ffffff&area=true&hide_border=true"
-  width="96%"
-/>
+<img src="https://img.shields.io/badge/16%20PUBLIC%20REPOSITORIES-161b22?style=for-the-badge&logo=github&logoColor=white">
+<img src="https://img.shields.io/badge/4%20STARS-161b22?style=for-the-badge&logo=github&logoColor=white">
+<img src="https://img.shields.io/badge/3%20FOLLOWERS-161b22?style=for-the-badge&logo=github&logoColor=white">
 
 </p>
 
-
 <br>
 
-
-<!-- ========================================================= -->
-<!--                        CONTACT                            -->
-<!-- ========================================================= -->
-
-<h2 align="center">⌁ Contact</h2>
+<h2 align="center" id="contact">⌁ Contact</h2>
 
 <hr>
 
 <p align="center">
 
 <a href="mailto:jitankasarkar2017@gmail.com">
-<img src="https://img.shields.io/badge/Gmail-111111?style=for-the-badge&logo=gmail&logoColor=white"/>
+<img src="https://img.shields.io/badge/EMAIL-161b22?style=for-the-badge&logo=gmail&logoColor=white">
 </a>
 
-<a href="https://linkedin.com/in/jitankasarkar">
-<img src="https://img.shields.io/badge/LinkedIn-111111?style=for-the-badge&logo=linkedin&logoColor=white"/>
+<a href="https://linkedin.com/in/Jitankasarkar">
+<img src="https://img.shields.io/badge/LINKEDIN-161b22?style=for-the-badge&logo=linkedin&logoColor=white">
 </a>
 
-<a href="https://github.com/YOUR_GITHUB_USERNAME">
-<img src="https://img.shields.io/badge/GitHub-111111?style=for-the-badge&logo=github&logoColor=white"/>
+<a href="https://github.com/Jitankasarkar">
+<img src="https://img.shields.io/badge/GITHUB-161b22?style=for-the-badge&logo=github&logoColor=white">
 </a>
 
 </p>
 
-
-<br><br>
+<br>
 
 <p align="center">
-  <i>⌘ Keep building. Keep learning.</i>
+<img src="https://komarev.com/ghpvc/?username=Jitankasarkar&style=flat-square&color=161b22&label=PROFILE+VIEWS" alt="Profile views">
+</p>
+
+<br>
+
+<p align="center">
+<i>⌘ Keep building. Keep learning.</i>
 </p>
