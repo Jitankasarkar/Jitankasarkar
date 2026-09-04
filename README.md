@@ -20,6 +20,10 @@
 
 <br>
 
+<!-- ========================================================= -->
+<!--                        ABOUT ME                           -->
+<!-- ========================================================= -->
+
 <h2 align="center" id="about-me">⌘ About me</h2>
 
 <hr>
@@ -27,55 +31,77 @@
 <table>
 <tr>
 
-<td width="60%" valign="middle">
+<td width="62%" valign="top">
 
 <p align="center">
 
 <b>Hey! I'm Jitanka 👋</b>
 
+</p>
+
+<p>
+I'm a developer who enjoys turning ideas into useful software
+and understanding what happens behind the interfaces we use
+every day. I like taking an idea from a rough concept and
+gradually turning it into something functional, polished and
+actually usable.
+</p>
+
+<p>
+My interests sit somewhere between <b>software development</b>
+and <b>artificial intelligence</b>. I enjoy building web and
+mobile applications, working with backend systems, and
+experimenting with AI-powered features and intelligent
+applications.
+</p>
+
+<p>
+I'm especially interested in understanding the complete picture —
+from designing an interface and connecting APIs to working with
+databases, models and the systems that make an application work
+behind the scenes.
+</p>
+
+<br>
+
+<p align="center">
+
+<b>Currently exploring</b>
+
 <br><br>
 
-A developer who enjoys building things,
-solving problems and learning how technology
-works under the hood.
-
-<br><br>
-
-I work across
-
-<br><br>
-
-<img src="https://img.shields.io/badge/WEB-161b22?style=flat-square">
-<img src="https://img.shields.io/badge/MOBILE-161b22?style=flat-square">
-<img src="https://img.shields.io/badge/BACKEND-161b22?style=flat-square">
-<img src="https://img.shields.io/badge/AI-161b22?style=flat-square">
-
-<br><br>
-
-<code>Full-Stack</code>
+<code>Full-Stack Development</code>
 &nbsp;
 <code>AI / ML</code>
 &nbsp;
 <code>LLMs</code>
 &nbsp;
-<code>Backend</code>
+<code>Backend Systems</code>
 
 </p>
 
 </td>
 
-<td width="40%" align="center">
+<td width="38%" align="center" valign="middle">
 
 <img
-src="./assets/coding.svg"
-width="270"
-alt="Coding terminal"
+  src="./assets/coding.svg"
+  width="270"
+  alt="Coding terminal illustration"
 />
 
-<br>
+<br><br>
 
 <p>
 <code>jitanka@github:~$</code>
+</p>
+
+<p>
+<code>building ideas...</code>
+<br>
+<code>learning things...</code>
+<br>
+<code>shipping projects...</code>
 </p>
 
 </td>
