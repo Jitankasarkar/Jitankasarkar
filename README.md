@@ -76,15 +76,13 @@ and constantly experimenting with new technologies.
 
 <p align="center">
 
-<img src="https://skillicons.dev/icons?i=java,python,c,js,react,flutter,nodejs,express&theme=dark&perline=8" alt="Languages and frameworks">
-
-<br><br>
-
-<img src="https://skillicons.dev/icons?i=firebase,mysql,git,github,pytorch,opencv,vscode,linux&theme=dark&perline=8" alt="Tools and platforms">
+<img
+  src="https://skillicons.dev/icons?i=java,python,c,js,react,flutter,nodejs,express,firebase,mysql,git,github,pytorch,opencv,vscode,linux&theme=dark&perline=8"
+  alt="Technologies"
+/>
 
 </p>
 
-<br>
 
 <h2 align="center">⌁ Statistics</h2>
 
