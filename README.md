@@ -20,13 +20,14 @@
 
 <br>
 
-<h2 align="center">⌘ About me</h2>
+<h2 align="center" id="about-me">⌘ About me</h2>
 
 <hr>
 
 <table>
 <tr>
-<td width="64%" valign="middle">
+
+<td width="60%" valign="middle">
 
 <p align="center">
 
@@ -34,13 +35,20 @@
 
 <br><br>
 
-A developer who enjoys turning ideas into useful software
-and understanding how things work under the hood.
+A developer who enjoys building things,
+solving problems and learning how technology
+works under the hood.
 
 <br><br>
 
-I like exploring <b>web, mobile, backend and AI</b>
-and constantly experimenting with new technologies.
+I work across
+
+<br><br>
+
+<img src="https://img.shields.io/badge/WEB-161b22?style=flat-square">
+<img src="https://img.shields.io/badge/MOBILE-161b22?style=flat-square">
+<img src="https://img.shields.io/badge/BACKEND-161b22?style=flat-square">
+<img src="https://img.shields.io/badge/AI-161b22?style=flat-square">
 
 <br><br>
 
@@ -52,19 +60,26 @@ and constantly experimenting with new technologies.
 &nbsp;
 <code>Backend</code>
 
-<br><br>
-
-<i>There is always something new to build.</i>
-
 </p>
 
 </td>
 
-<td width="36%" align="center">
+<td width="40%" align="center">
 
-<img src="./assets/coding.svg" width="240" alt="Coding terminal illustration">
+<img
+src="./assets/coding.svg"
+width="270"
+alt="Coding terminal"
+/>
+
+<br>
+
+<p>
+<code>jitanka@github:~$</code>
+</p>
 
 </td>
+
 </tr>
 </table>
 
