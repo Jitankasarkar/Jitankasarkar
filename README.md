@@ -10,9 +10,7 @@
 
 <a href="#about-me">ABOUT ME</a>
 &nbsp;&nbsp;•&nbsp;&nbsp;
-<a href="#technologies">TECHNOLOGIES</a>
-&nbsp;&nbsp;•&nbsp;&nbsp;
-<a href="#statistics">STATISTICS</a>
+<a href="#github-dashboard">GITHUB DASHBOARD</a>
 &nbsp;&nbsp;•&nbsp;&nbsp;
 <a href="#contact">CONTACT</a>
 
@@ -34,9 +32,7 @@
 <td width="62%" valign="top">
 
 <p align="center">
-
 <b>Hey! I'm Jitanka 👋</b>
-
 </p>
 
 <p>
@@ -111,49 +107,33 @@ behind the scenes.
 
 <br>
 
-<h2 align="center">⚙ Technologies</h2>
+<!-- ========================================================= -->
+<!--                    GITHUB DASHBOARD                       -->
+<!-- ========================================================= -->
+
+<h2 align="center" id="github-dashboard">⚙ GitHub Dashboard</h2>
 
 <hr>
 
 <p align="center">
+<b>Automatically refreshed GitHub profile analytics</b>
+</p>
 
+<br>
+
+<p align="center">
 <img
-  src="https://skillicons.dev/icons?i=java,python,c,js,react,flutter,nodejs,express,firebase,mysql,git,github,pytorch,opencv,vscode,linux&theme=dark&perline=8"
-  alt="Technologies"
+  src="./assets/github-dashboard.svg"
+  width="96%"
+  alt="GitHub Dashboard"
 />
-
-</p>
-
-
-<h2 align="center">⌁ Statistics</h2>
-
-<hr>
-
-<p align="center">
-<img src="./assets/stats.svg" width="96%" alt="GitHub profile statistics">
 </p>
 
 <br>
 
-<p align="center">
-<img src="./assets/activity.svg" width="96%" alt="Coding activity visualization">
-</p>
-
-<br>
-
-<h2 align="center">⌁ GitHub presence</h2>
-
-<hr>
-
-<p align="center">
-
-<img src="https://img.shields.io/badge/16%20PUBLIC%20REPOSITORIES-161b22?style=for-the-badge&logo=github&logoColor=white">
-<img src="https://img.shields.io/badge/4%20STARS-161b22?style=for-the-badge&logo=github&logoColor=white">
-<img src="https://img.shields.io/badge/3%20FOLLOWERS-161b22?style=for-the-badge&logo=github&logoColor=white">
-
-</p>
-
-<br>
+<!-- ========================================================= -->
+<!--                         CONTACT                           -->
+<!-- ========================================================= -->
 
 <h2 align="center" id="contact">⌁ Contact</h2>
 
@@ -162,23 +142,45 @@ behind the scenes.
 <p align="center">
 
 <a href="mailto:jitankasarkar2017@gmail.com">
-<img src="https://img.shields.io/badge/EMAIL-161b22?style=for-the-badge&logo=gmail&logoColor=white">
+<img
+  src="https://img.shields.io/badge/EMAIL-161b22?style=for-the-badge&logo=gmail&logoColor=white"
+  alt="Email"
+/>
 </a>
+
+&nbsp;
 
 <a href="https://linkedin.com/in/Jitankasarkar">
-<img src="https://img.shields.io/badge/LINKEDIN-161b22?style=for-the-badge&logo=linkedin&logoColor=white">
+<img
+  src="https://img.shields.io/badge/LINKEDIN-161b22?style=for-the-badge&logo=linkedin&logoColor=white"
+  alt="LinkedIn"
+/>
 </a>
 
+&nbsp;
+
 <a href="https://github.com/Jitankasarkar">
-<img src="https://img.shields.io/badge/GITHUB-161b22?style=for-the-badge&logo=github&logoColor=white">
+<img
+  src="https://img.shields.io/badge/GITHUB-161b22?style=for-the-badge&logo=github&logoColor=white"
+  alt="GitHub"
+/>
 </a>
 
 </p>
 
 <br>
 
+<!-- ========================================================= -->
+<!--                       PROFILE VIEWS                       -->
+<!-- ========================================================= -->
+
 <p align="center">
-<img src="https://komarev.com/ghpvc/?username=Jitankasarkar&style=flat-square&color=161b22&label=PROFILE+VIEWS" alt="Profile views">
+
+<img
+  src="https://komarev.com/ghpvc/?username=Jitankasarkar&style=flat-square&color=161b22&label=PROFILE+VIEWS"
+  alt="Profile views"
+/>
+
 </p>
 
 <br>
