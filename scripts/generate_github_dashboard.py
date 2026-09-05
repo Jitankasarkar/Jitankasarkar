@@ -1,11 +1,16 @@
-
+import base64
 import json
 import os
+import re
 import urllib.request
 from collections import defaultdict
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
+
+# ============================================================
+# CONFIGURATION
+# ============================================================
 
 USERNAME = "Jitankasarkar"
 
@@ -19,9 +24,9 @@ if not TOKEN:
     raise RuntimeError("GITHUB_TOKEN is not available.")
 
 
-# ------------------------------------------------------------
-# GitHub API helpers
-# ------------------------------------------------------------
+# ============================================================
+# GITHUB API HELPERS
+# ============================================================
 
 def github_get(url):
     request = urllib.request.Request(
@@ -34,7 +39,7 @@ def github_get(url):
         }
     )
 
-    with urllib.request.urlopen(request) as response:
+    with urllib.request.urlopen(request, timeout=30) as response:
         return json.loads(response.read().decode("utf-8"))
 
 
@@ -55,18 +60,154 @@ def github_graphql(query, variables):
         }
     )
 
-    with urllib.request.urlopen(request) as response:
+    with urllib.request.urlopen(request, timeout=30) as response:
         result = json.loads(response.read().decode("utf-8"))
 
     if "errors" in result:
-        raise RuntimeError(json.dumps(result["errors"], indent=2))
+        raise RuntimeError(
+            json.dumps(result["errors"], indent=2)
+        )
 
     return result["data"]
 
 
-# ------------------------------------------------------------
-# Basic profile
-# ------------------------------------------------------------
+# ============================================================
+# TECHNOLOGY ICONS
+#
+# Devicon SVGs are downloaded and their SVG contents are
+# embedded directly inside the generated dashboard.
+# ============================================================
+
+ICON_URLS = {
+    "Java":
+        "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg",
+
+    "Python":
+        "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg",
+
+    "C":
+        "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/c/c-original.svg",
+
+    "JavaScript":
+        "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg",
+
+    "React":
+        "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg",
+
+    "Flutter":
+        "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/flutter/flutter-original.svg",
+
+    "Node.js":
+        "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg",
+
+    "Express.js":
+        "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/express/express-original.svg",
+
+    "Firebase":
+        "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/firebase/firebase-plain.svg",
+
+    "MySQL":
+        "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg",
+
+    "Git":
+        "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg",
+
+    "GitHub":
+        "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg",
+
+    "PyTorch":
+        "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/pytorch/pytorch-original.svg",
+
+    "OpenCV":
+        "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/opencv/opencv-original.svg",
+
+    "n8n":
+        "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/n8n/n8n-original.svg",
+
+    "Postman":
+        "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postman/postman-original.svg"
+}
+
+
+ICON_CACHE = {}
+
+
+def get_icon_svg(name):
+    """
+    Download a technology SVG and extract its inner SVG markup.
+
+    The icon is embedded directly into the dashboard instead
+    of relying on an external <img> request when the README
+    is rendered.
+    """
+
+    if name in ICON_CACHE:
+        return ICON_CACHE[name]
+
+    url = ICON_URLS.get(name)
+
+    if not url:
+        return None
+
+    try:
+        request = urllib.request.Request(
+            url,
+            headers={
+                "User-Agent": "Jitanka-GitHub-Profile"
+            }
+        )
+
+        with urllib.request.urlopen(
+            request,
+            timeout=20
+        ) as response:
+            raw_svg = response.read().decode("utf-8")
+
+        # Remove XML declaration if present.
+        raw_svg = re.sub(
+            r"<\?xml.*?\?>",
+            "",
+            raw_svg,
+            flags=re.DOTALL
+        )
+
+        # Remove DOCTYPE if present.
+        raw_svg = re.sub(
+            r"<!DOCTYPE.*?>",
+            "",
+            raw_svg,
+            flags=re.DOTALL
+        )
+
+        # Extract the contents of the root SVG element.
+        match = re.search(
+            r"<svg\b[^>]*>(.*?)</svg>",
+            raw_svg,
+            flags=re.DOTALL | re.IGNORECASE
+        )
+
+        if not match:
+            print(f"Could not parse icon SVG for {name}")
+            return None
+
+        inner_svg = match.group(1).strip()
+
+        ICON_CACHE[name] = inner_svg
+
+        return inner_svg
+
+    except Exception as error:
+        print(
+            f"Could not load icon for {name}: {error}"
+        )
+        return None
+
+
+# ============================================================
+# BASIC PROFILE
+# ============================================================
+
+print("Fetching GitHub profile...")
 
 user = github_get(
     f"{API_URL}/users/{USERNAME}"
@@ -77,20 +218,28 @@ followers = user["followers"]
 following = user["following"]
 
 
-# ------------------------------------------------------------
-# Repositories
-# ------------------------------------------------------------
+# ============================================================
+# REPOSITORIES
+# ============================================================
+
+print("Fetching repositories...")
 
 repos = github_get(
-    f"{API_URL}/users/{USERNAME}/repos?per_page=100&type=owner&sort=updated"
+    f"{API_URL}/users/{USERNAME}/repos"
+    f"?per_page=100&type=owner&sort=updated"
 )
 
 # Only repositories owned by the user.
 repos = [
-    repo for repo in repos
+    repo
+    for repo in repos
     if not repo.get("fork", False)
 ]
 
+
+# ============================================================
+# TOTAL STARS
+# ============================================================
 
 total_stars = sum(
     repo.get("stargazers_count", 0)
@@ -98,20 +247,24 @@ total_stars = sum(
 )
 
 
-# ------------------------------------------------------------
-# Language distribution
+# ============================================================
+# LANGUAGE DISTRIBUTION
 #
-# GitHub's language endpoint gives the number of bytes
-# attributed to each language in a repository.
-# ------------------------------------------------------------
+# GitHub's language endpoint returns byte counts for each
+# language used in a repository.
+# ============================================================
+
+print("Fetching language statistics...")
 
 language_bytes = defaultdict(int)
 
 for repo in repos:
+
     owner = repo["owner"]["login"]
     name = repo["name"]
 
     try:
+
         languages = github_get(
             f"{API_URL}/repos/{owner}/{name}/languages"
         )
@@ -120,6 +273,7 @@ for repo in repos:
             language_bytes[language] += byte_count
 
     except Exception as error:
+
         print(
             f"Could not read languages for {name}: {error}"
         )
@@ -131,11 +285,12 @@ sorted_languages = sorted(
     reverse=True
 )
 
-# Keep the visualization compact.
+# Keep visualization compact.
 top_languages = sorted_languages[:5]
 
 other_bytes = sum(
-    value for _, value in sorted_languages[5:]
+    value
+    for _, value in sorted_languages[5:]
 )
 
 if other_bytes > 0:
@@ -145,16 +300,18 @@ if other_bytes > 0:
 
 
 language_total = sum(
-    value for _, value in top_languages
+    value
+    for _, value in top_languages
 )
 
 
-# ------------------------------------------------------------
-# GitHub contribution calendar
+# ============================================================
+# CONTRIBUTION CALENDAR
 #
-# We use the last year because GitHub's contribution calendar
-# naturally represents a yearly contribution view.
-# ------------------------------------------------------------
+# Fetch the last 365 days from GitHub GraphQL.
+# ============================================================
+
+print("Fetching contribution activity...")
 
 now = datetime.now(timezone.utc)
 
@@ -219,9 +376,9 @@ for week in weeks:
         days.append(day)
 
 
-# ------------------------------------------------------------
-# Contribution streak calculations
-# ------------------------------------------------------------
+# ============================================================
+# CONTRIBUTION STREAK CALCULATIONS
+# ============================================================
 
 day_map = {
     day["date"]: day["contributionCount"]
@@ -229,44 +386,53 @@ day_map = {
 }
 
 
-sorted_dates = sorted(day_map.keys())
+sorted_dates = sorted(
+    day_map.keys()
+)
 
 
 def calculate_streaks():
+
     if not sorted_dates:
         return 0, 0
 
-    # Current streak.
+    # --------------------------------------------------------
+    # Current streak
+    # --------------------------------------------------------
+
     current = 0
 
-    cursor = datetime.now(
+    today = datetime.now(
         timezone.utc
     ).date()
 
-    while True:
-        key = cursor.isoformat()
+    cursor = today
 
-        # If today has no contribution yet, check yesterday.
-        if key not in day_map:
-            if current == 0:
-                cursor -= timedelta(days=1)
-                key = cursor.isoformat()
+    # If today has no contribution yet,
+    # start from yesterday.
+    if day_map.get(
+        cursor.isoformat(),
+        0
+    ) == 0:
 
-                if day_map.get(key, 0) == 0:
-                    break
-            else:
-                break
+        cursor -= timedelta(days=1)
 
-        if day_map.get(key, 0) > 0:
-            current += 1
-            cursor -= timedelta(days=1)
-        else:
-            break
+    while day_map.get(
+        cursor.isoformat(),
+        0
+    ) > 0:
 
-    # Longest streak.
+        current += 1
+
+        cursor -= timedelta(days=1)
+
+
+    # --------------------------------------------------------
+    # Longest streak
+    # --------------------------------------------------------
+
     longest = 0
     running = 0
-
     previous = None
 
     for date_string in sorted_dates:
@@ -280,10 +446,14 @@ def calculate_streaks():
 
             if (
                 previous is not None
-                and date_value == previous + timedelta(days=1)
+                and date_value
+                == previous + timedelta(days=1)
             ):
+
                 running += 1
+
             else:
+
                 running = 1
 
             longest = max(
@@ -292,6 +462,7 @@ def calculate_streaks():
             )
 
         else:
+
             running = 0
 
         previous = date_value
@@ -299,14 +470,17 @@ def calculate_streaks():
     return current, longest
 
 
-current_streak, longest_streak = calculate_streaks()
+current_streak, longest_streak = (
+    calculate_streaks()
+)
 
 
-# ------------------------------------------------------------
-# SVG helpers
-# ------------------------------------------------------------
+# ============================================================
+# SVG HELPERS
+# ============================================================
 
 def esc(value):
+
     value = str(value)
 
     return (
@@ -328,6 +502,7 @@ def text(
     fill="#f0f6fc",
     anchor="start"
 ):
+
     return f"""
     <text
       x="{x}"
@@ -351,6 +526,7 @@ def rect(
     stroke="#30363d",
     radius=14
 ):
+
     return f"""
     <rect
       x="{x}"
@@ -364,9 +540,9 @@ def rect(
     """
 
 
-# ------------------------------------------------------------
-# Theme
-# ------------------------------------------------------------
+# ============================================================
+# THEME
+# ============================================================
 
 BG = "#0d1117"
 CARD = "#0d1117"
@@ -381,6 +557,7 @@ GREEN_3 = "#006d32"
 GREEN_4 = "#26a641"
 GREEN_5 = "#39d353"
 
+
 LANGUAGE_COLORS = [
     "#f1e05a",
     "#3178c6",
@@ -391,9 +568,9 @@ LANGUAGE_COLORS = [
 ]
 
 
-# ------------------------------------------------------------
-# SVG dimensions
-# ------------------------------------------------------------
+# ============================================================
+# SVG DIMENSIONS
+# ============================================================
 
 WIDTH = 1200
 HEIGHT = 1240
@@ -416,9 +593,9 @@ svg.append(
 )
 
 
-# ------------------------------------------------------------
+# ============================================================
 # TECHNOLOGIES
-# ------------------------------------------------------------
+# ============================================================
 
 svg.append(
     text(
@@ -431,6 +608,7 @@ svg.append(
         "middle"
     )
 )
+
 
 svg.append(
     f"""
@@ -452,7 +630,10 @@ svg.append(
 )
 
 
-# Left language card
+# ============================================================
+# LANGUAGE CARD
+# ============================================================
+
 svg.append(
     rect(
         30,
@@ -461,6 +642,7 @@ svg.append(
         260
     )
 )
+
 
 svg.append(
     text(
@@ -473,12 +655,14 @@ svg.append(
 )
 
 
-# Donut chart
+# ============================================================
+# DONUT CHART
+# ============================================================
+
 cx = 185
 cy = 244
 
 outer_radius = 82
-inner_radius = 52
 
 svg.append(
     f"""
@@ -493,14 +677,19 @@ svg.append(
 )
 
 
-# Donut segments using stroke dasharray.
-circumference = 2 * 3.141592653589793 * outer_radius
+circumference = (
+    2
+    * 3.141592653589793
+    * outer_radius
+)
 
 offset = 0
 
-for index, (language, value) in enumerate(
-    top_languages
-):
+
+for index, (
+    language,
+    value
+) in enumerate(top_languages):
 
     percentage = (
         value / language_total
@@ -508,7 +697,10 @@ for index, (language, value) in enumerate(
         else 0
     )
 
-    length = circumference * percentage
+    length = (
+        circumference
+        * percentage
+    )
 
     color = LANGUAGE_COLORS[
         min(
@@ -547,6 +739,7 @@ svg.append(
     )
 )
 
+
 svg.append(
     text(
         cx,
@@ -560,12 +753,17 @@ svg.append(
 )
 
 
-# Language legend
+# ============================================================
+# LANGUAGE LEGEND
+# ============================================================
+
 legend_y = 177
 
-for index, (language, value) in enumerate(
-    top_languages
-):
+
+for index, (
+    language,
+    value
+) in enumerate(top_languages):
 
     percentage = (
         value / language_total * 100
@@ -580,7 +778,10 @@ for index, (language, value) in enumerate(
         )
     ]
 
-    y = legend_y + index * 36
+    y = (
+        legend_y
+        + index * 36
+    )
 
     svg.append(
         f"""
@@ -616,7 +817,10 @@ for index, (language, value) in enumerate(
     )
 
 
-# Tools card
+# ============================================================
+# TECHNOLOGIES & TOOLS CARD
+# ============================================================
+
 svg.append(
     rect(
         600,
@@ -625,6 +829,7 @@ svg.append(
         260
     )
 )
+
 
 svg.append(
     text(
@@ -637,9 +842,7 @@ svg.append(
 )
 
 
-# We keep this list because GitHub cannot infer frameworks/tools
-# such as React or Firebase reliably from repository metadata.
-
+# Your selected technology stack.
 tools = [
     "Java",
     "Python",
@@ -648,96 +851,124 @@ tools = [
     "React",
     "Flutter",
     "Node.js",
-    "Express",
+    "Express.js",
     "Firebase",
     "MySQL",
     "Git",
     "GitHub",
     "PyTorch",
     "OpenCV",
-    "VS Code",
-    "Linux"
+    "n8n",
+    "Postman"
 ]
 
 
-# Simple text-based tool chips.
-# This avoids external image dependencies in the generated SVG.
+# ============================================================
+# TECHNOLOGY ICON TILES
+# ============================================================
 
-tool_positions = []
+tile_width = 54
+tile_height = 54
 
-for row in range(2):
-    for col in range(8):
-        index = row * 8 + col
+start_x = 625
+start_y = 180
 
-        if index >= len(tools):
-            continue
-
-        x = 625 + col * 66
-        y = 180 + row * 75
-
-        tool_positions.append(
-            (tools[index], x, y)
-        )
+horizontal_gap = 66
+vertical_gap = 75
 
 
-for index, (tool, x, y) in enumerate(
-    tool_positions
-):
+for index, tool in enumerate(tools):
 
+    row = index // 8
+    col = index % 8
+
+    x = (
+        start_x
+        + col * horizontal_gap
+    )
+
+    y = (
+        start_y
+        + row * vertical_gap
+    )
+
+
+    # Tile
     svg.append(
         f"""
         <rect
           x="{x}"
           y="{y}"
-          width="54"
-          height="54"
+          width="{tile_width}"
+          height="{tile_height}"
           rx="12"
           fill="#161b22"
-          stroke="{BORDER}"/>
+          stroke="{BORDER}"
+          stroke-width="1"/>
         """
     )
 
-    # Short visual abbreviation.
-    abbreviations = {
-        "Java": "☕",
-        "Python": "PY",
-        "C": "C",
-        "JavaScript": "JS",
-        "React": "⚛",
-        "Flutter": "F",
-        "Node.js": "JS",
-        "Express": "EX",
-        "Firebase": "FB",
-        "MySQL": "SQL",
-        "Git": "G",
-        "GitHub": "GH",
-        "PyTorch": "PT",
-        "OpenCV": "CV",
-        "VS Code": "VS",
-        "Linux": "🐧"
-    }
 
-    label = abbreviations.get(
-        tool,
-        tool[:2]
-    )
+    # Actual technology icon
+    icon_svg = get_icon_svg(tool)
 
-    svg.append(
-        text(
-            x + 27,
-            y + 34,
-            label,
-            17,
-            "700",
-            TEXT,
-            "middle"
+
+    if icon_svg:
+
+        svg.append(
+            f"""
+            <g
+              transform="
+                translate({x + 11},{y + 11})
+                scale(0.32)
+              "
+              width="100"
+              height="100">
+
+              {icon_svg}
+
+            </g>
+            """
         )
-    )
+
+    else:
+
+        # Fallback if an icon cannot be downloaded.
+        fallback = {
+            "Java": "☕",
+            "Python": "PY",
+            "C": "C",
+            "JavaScript": "JS",
+            "React": "⚛",
+            "Flutter": "F",
+            "Node.js": "JS",
+            "Express.js": "EX",
+            "Firebase": "FB",
+            "MySQL": "SQL",
+            "Git": "G",
+            "GitHub": "GH",
+            "PyTorch": "PT",
+            "OpenCV": "CV",
+            "n8n": "N8",
+            "Postman": "PM"
+        }.get(tool, tool[:2])
+
+        svg.append(
+            text(
+                x + 27,
+                y + 34,
+                fallback,
+                16,
+                "700",
+                TEXT,
+                "middle"
+            )
+        )
 
 
-# ------------------------------------------------------------
+# ============================================================
 # STATISTICS
-# ------------------------------------------------------------
+# ============================================================
 
 svg.append(
     text(
@@ -750,6 +981,7 @@ svg.append(
         "middle"
     )
 )
+
 
 svg.append(
     f"""
@@ -772,19 +1004,44 @@ svg.append(
 
 
 stats = [
-    ("Repositories", public_repositories, "▣"),
-    ("Total Stars", total_stars, "★"),
-    ("Followers", followers, "●"),
-    ("Following", following, "●")
+    (
+        "Repositories",
+        public_repositories,
+        "▣"
+    ),
+    (
+        "Total Stars",
+        total_stars,
+        "★"
+    ),
+    (
+        "Followers",
+        followers,
+        "●"
+    ),
+    (
+        "Following",
+        following,
+        "●"
+    )
 ]
 
 
 card_width = 270
 gap = 20
 
-for index, (label, value, icon) in enumerate(stats):
 
-    x = 30 + index * (card_width + gap)
+for index, (
+    label,
+    value,
+    icon
+) in enumerate(stats):
+
+    x = (
+        30
+        + index * (card_width + gap)
+    )
+
 
     svg.append(
         rect(
@@ -794,6 +1051,7 @@ for index, (label, value, icon) in enumerate(stats):
             105
         )
     )
+
 
     svg.append(
         f"""
@@ -808,6 +1066,7 @@ for index, (label, value, icon) in enumerate(stats):
         """
     )
 
+
     svg.append(
         text(
             x + 43,
@@ -820,6 +1079,7 @@ for index, (label, value, icon) in enumerate(stats):
         )
     )
 
+
     svg.append(
         text(
             x + 82,
@@ -829,6 +1089,7 @@ for index, (label, value, icon) in enumerate(stats):
             "700"
         )
     )
+
 
     svg.append(
         text(
@@ -842,9 +1103,9 @@ for index, (label, value, icon) in enumerate(stats):
     )
 
 
-# ------------------------------------------------------------
+# ============================================================
 # GITHUB ACTIVITY
-# ------------------------------------------------------------
+# ============================================================
 
 svg.append(
     text(
@@ -857,6 +1118,7 @@ svg.append(
         "middle"
     )
 )
+
 
 svg.append(
     f"""
@@ -878,7 +1140,10 @@ svg.append(
 )
 
 
-# Contribution calendar
+# ============================================================
+# CONTRIBUTION CARD
+# ============================================================
+
 svg.append(
     rect(
         30,
@@ -887,6 +1152,7 @@ svg.append(
         270
     )
 )
+
 
 svg.append(
     text(
@@ -899,17 +1165,22 @@ svg.append(
 )
 
 
-# Contribution grid.
+# ============================================================
+# CONTRIBUTION GRID
 #
-# We use the last 365 days and arrange them by weeks.
+# 53 weeks x 7 days.
+# Sized to stay inside the 670px card.
+# ============================================================
 
 recent_weeks = weeks[-53:]
 
-grid_x = 55
-grid_y = 790
 
-cell = 11
-cell_gap = 3
+grid_x = 55
+grid_y = 795
+
+cell = 10
+cell_gap = 2
+
 
 levels = {
     "NONE": GREEN_1,
@@ -928,22 +1199,31 @@ for week_index, week in enumerate(
         week["contributionDays"]
     ):
 
-        x = grid_x + (
-            week_index * (cell + cell_gap)
+        x = (
+            grid_x
+            + week_index * (
+                cell + cell_gap
+            )
         )
 
-        y = grid_y + (
-            day_index * (cell + cell_gap)
+        y = (
+            grid_y
+            + day_index * (
+                cell + cell_gap
+            )
         )
+
 
         level = day[
             "contributionLevel"
         ]
 
+
         fill = levels.get(
             level,
             GREEN_1
         )
+
 
         svg.append(
             f"""
@@ -952,14 +1232,18 @@ for week_index, week in enumerate(
               y="{y}"
               width="{cell}"
               height="{cell}"
-              rx="3"
+              rx="2"
               fill="{fill}"/>
             """
         )
 
 
-# Month labels.
+# ============================================================
+# MONTH LABELS
+# ============================================================
+
 month_positions = {}
+
 
 for week_index, week in enumerate(
     recent_weeks
@@ -972,9 +1256,12 @@ for week_index, week in enumerate(
             "%Y-%m-%d"
         )
 
+
         if date.day <= 7:
 
-            month = date.strftime("%b")
+            month = date.strftime(
+                "%b"
+            )
 
             month_positions.setdefault(
                 month,
@@ -982,11 +1269,17 @@ for week_index, week in enumerate(
             )
 
 
-for month, week_index in month_positions.items():
+for month, week_index in (
+    month_positions.items()
+):
 
-    x = grid_x + (
-        week_index * (cell + cell_gap)
+    x = (
+        grid_x
+        + week_index * (
+            cell + cell_gap
+        )
     )
+
 
     svg.append(
         text(
@@ -1000,6 +1293,10 @@ for month, week_index in month_positions.items():
     )
 
 
+# ============================================================
+# CONTRIBUTION TOTAL
+# ============================================================
+
 svg.append(
     text(
         54,
@@ -1012,9 +1309,9 @@ svg.append(
 )
 
 
-# ------------------------------------------------------------
+# ============================================================
 # STREAK CARD
-# ------------------------------------------------------------
+# ============================================================
 
 svg.append(
     rect(
@@ -1024,6 +1321,7 @@ svg.append(
         270
     )
 )
+
 
 svg.append(
     text(
@@ -1037,17 +1335,31 @@ svg.append(
 
 
 streak_stats = [
-    ("Current Streak", current_streak),
-    ("Longest Streak", longest_streak),
-    ("Contributions", total_contributions)
+    (
+        "Current Streak",
+        current_streak
+    ),
+    (
+        "Longest Streak",
+        longest_streak
+    ),
+    (
+        "Contributions",
+        total_contributions
+    )
 ]
 
 
-for index, (label, value) in enumerate(
-    streak_stats
-):
+for index, (
+    label,
+    value
+) in enumerate(streak_stats):
 
-    x = 742 + index * 142
+    x = (
+        765
+        + index * 142
+    )
+
 
     svg.append(
         text(
@@ -1061,6 +1373,7 @@ for index, (label, value) in enumerate(
         )
     )
 
+
     svg.append(
         text(
             x,
@@ -1072,6 +1385,7 @@ for index, (label, value) in enumerate(
             "middle"
         )
     )
+
 
     svg.append(
         text(
@@ -1086,9 +1400,9 @@ for index, (label, value) in enumerate(
     )
 
 
-# ------------------------------------------------------------
-# PRESENCE
-# ------------------------------------------------------------
+# ============================================================
+# GITHUB PRESENCE
+# ============================================================
 
 svg.append(
     text(
@@ -1101,6 +1415,7 @@ svg.append(
         "middle"
     )
 )
+
 
 svg.append(
     f"""
@@ -1123,17 +1438,31 @@ svg.append(
 
 
 presence = [
-    ("Followers", followers),
-    ("Stars", total_stars),
-    ("Repositories", public_repositories)
+    (
+        "Followers",
+        followers
+    ),
+    (
+        "Stars",
+        total_stars
+    ),
+    (
+        "Repositories",
+        public_repositories
+    )
 ]
 
 
-for index, (label, value) in enumerate(
-    presence
-):
+for index, (
+    label,
+    value
+) in enumerate(presence):
 
-    x = 30 + index * 180
+    x = (
+        30
+        + index * 180
+    )
+
 
     svg.append(
         rect(
@@ -1143,6 +1472,7 @@ for index, (label, value) in enumerate(
             70
         )
     )
+
 
     svg.append(
         text(
@@ -1155,6 +1485,7 @@ for index, (label, value) in enumerate(
         )
     )
 
+
     svg.append(
         text(
             x + 18,
@@ -1166,9 +1497,9 @@ for index, (label, value) in enumerate(
     )
 
 
-# ------------------------------------------------------------
+# ============================================================
 # CONTACT
-# ------------------------------------------------------------
+# ============================================================
 
 svg.append(
     text(
@@ -1181,6 +1512,7 @@ svg.append(
         "middle"
     )
 )
+
 
 svg.append(
     f"""
@@ -1203,21 +1535,36 @@ svg.append(
 
 
 contacts = [
-    ("Email", "mailto:jitankasarkar2017@gmail.com"),
-    ("LinkedIn", "https://linkedin.com/in/Jitankasarkar"),
-    ("GitHub", "https://github.com/Jitankasarkar")
+    (
+        "Email",
+        "mailto:jitankasarkar2017@gmail.com"
+    ),
+    (
+        "LinkedIn",
+        "https://linkedin.com/in/Jitankasarkar"
+    ),
+    (
+        "GitHub",
+        "https://github.com/Jitankasarkar"
+    )
 ]
 
 
-for index, (label, url) in enumerate(
-    contacts
-):
+for index, (
+    label,
+    url
+) in enumerate(contacts):
 
-    x = 620 + index * 183
+    x = (
+        620
+        + index * 183
+    )
+
 
     svg.append(
         f"""
         <a href="{esc(url)}">
+
           <rect
             x="{x}"
             y="1090"
@@ -1246,18 +1593,21 @@ for index, (label, url) in enumerate(
             text-anchor="middle">
             →
           </text>
+
         </a>
         """
     )
 
 
-# ------------------------------------------------------------
+# ============================================================
 # FOOTER
-# ------------------------------------------------------------
+# ============================================================
 
 generated_at = datetime.now(
     timezone.utc
-).strftime("%d %b %Y, %H:%M UTC")
+).strftime(
+    "%d %b %Y, %H:%M UTC"
+)
 
 
 svg.append(
@@ -1270,6 +1620,7 @@ svg.append(
         MUTED
     )
 )
+
 
 svg.append(
     text(
@@ -1284,23 +1635,41 @@ svg.append(
 )
 
 
-svg.append("</svg>")
+# ============================================================
+# CLOSE SVG
+# ============================================================
+
+svg.append(
+    "</svg>"
+)
 
 
-# ------------------------------------------------------------
-# Write file
-# ------------------------------------------------------------
+# ============================================================
+# WRITE DASHBOARD
+# ============================================================
 
 OUTPUT.parent.mkdir(
     parents=True,
     exist_ok=True
 )
 
+
 OUTPUT.write_text(
     "".join(svg),
     encoding="utf-8"
 )
 
+
 print(
     f"Dashboard written to {OUTPUT}"
 )
+
+print()
+print("Dashboard data:")
+print(f"  Repositories: {public_repositories}")
+print(f"  Stars:        {total_stars}")
+print(f"  Followers:    {followers}")
+print(f"  Following:    {following}")
+print(f"  Contributions:{total_contributions}")
+print(f"  Current streak: {current_streak}")
+print(f"  Longest streak: {longest_streak}")
