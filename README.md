@@ -115,7 +115,7 @@ behind the scenes.
 <!--                      LET'S CONNECT                        -->
 <!-- ========================================================= -->
 
-<br>
+
 
 <h2 align="center" id="contact">⌁ Let's Connect</h2>
 
@@ -125,7 +125,7 @@ behind the scenes.
 
 <p align="center">
 
-<a href="https://www.instagram.com/Jitankasarkar/" target="_blank">
+<a href="https://www.instagram.com/jitanka_01/" target="_blank">
 <img src="https://cdn.simpleicons.org/instagram/E4405F" width="34" height="34" alt="Instagram" />
 </a>
 &nbsp;&nbsp;
@@ -137,7 +137,7 @@ behind the scenes.
 <img src="https://cdn.simpleicons.org/github/F0F6FC" width="34" height="34" alt="GitHub" />
 </a>
 &nbsp;&nbsp;
-<a href="mailto:YOUR_EMAIL@gmail.com" target="_blank">
+<a href="mailto:jitankasarkar2017@gmail.com" target="_blank">
 <img src="https://cdn.simpleicons.org/gmail/EA4335" width="34" height="34" alt="Gmail" />
 </a>
 
