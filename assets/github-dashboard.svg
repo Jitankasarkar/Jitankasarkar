@@ -72,7 +72,7 @@
           fill="none"
           stroke="#f1e05a"
           stroke-width="28"
-          stroke-dasharray="404.2019567744124 111.01923841431363"
+          stroke-dasharray="374.38376747856995 140.83742771015608"
           stroke-dashoffset="0"
           transform="rotate(-90 185 244)"/>
         
@@ -83,8 +83,8 @@
           fill="none"
           stroke="#3178c6"
           stroke-width="28"
-          stroke-dasharray="64.76935826523955 450.4518369234865"
-          stroke-dashoffset="-404.2019567744124"
+          stroke-dasharray="60.10471781182394 455.1164773769021"
+          stroke-dashoffset="-374.38376747856995"
           transform="rotate(-90 185 244)"/>
         
         <circle
@@ -94,8 +94,8 @@
           fill="none"
           stroke="#3572A5"
           stroke-width="28"
-          stroke-dasharray="10.110687323316437 505.1105078654096"
-          stroke-dashoffset="-468.9713150396519"
+          stroke-dasharray="37.906050435464934 477.3151447532611"
+          stroke-dashoffset="-434.4884852903939"
           transform="rotate(-90 185 244)"/>
         
         <circle
@@ -105,8 +105,8 @@
           fill="none"
           stroke="#00B4AB"
           stroke-width="28"
-          stroke-dasharray="9.830723132915741 505.3904720558103"
-          stroke-dashoffset="-479.08200236296835"
+          stroke-dasharray="14.616890144728059 500.60430504399795"
+          stroke-dashoffset="-472.3945357258588"
           transform="rotate(-90 185 244)"/>
         
         <circle
@@ -116,8 +116,8 @@
           fill="none"
           stroke="#A97BFF"
           stroke-width="28"
-          stroke-dasharray="9.177246571846808 506.0439486168792"
-          stroke-dashoffset="-488.9127254958841"
+          stroke-dasharray="12.342325467208887 502.87886972151716"
+          stroke-dashoffset="-487.0114258705869"
           transform="rotate(-90 185 244)"/>
         
         <circle
@@ -127,8 +127,8 @@
           fill="none"
           stroke="#8b949e"
           stroke-width="28"
-          stroke-dasharray="17.131223120995077 498.08997206773097"
-          stroke-dashoffset="-498.0899720677309"
+          stroke-dasharray="15.867443850930245 499.35375133779576"
+          stroke-dashoffset="-499.35375133779576"
           transform="rotate(-90 185 244)"/>
         
     <text
@@ -178,7 +178,7 @@
       font-weight="500"
       fill="#8b949e"
       text-anchor="end">
-      78.5%
+      72.7%
     </text>
     
         <circle
@@ -206,7 +206,7 @@
       font-weight="500"
       fill="#8b949e"
       text-anchor="end">
-      12.6%
+      11.7%
     </text>
     
         <circle
@@ -223,7 +223,7 @@
       font-weight="500"
       fill="#f0f6fc"
       text-anchor="start">
-      CSS
+      Python
     </text>
     
     <text
@@ -234,7 +234,7 @@
       font-weight="500"
       fill="#8b949e"
       text-anchor="end">
-      2.0%
+      7.4%
     </text>
     
         <circle
@@ -251,7 +251,7 @@
       font-weight="500"
       fill="#f0f6fc"
       text-anchor="start">
-      Python
+      JavaScript
     </text>
     
     <text
@@ -262,7 +262,7 @@
       font-weight="500"
       fill="#8b949e"
       text-anchor="end">
-      1.9%
+      2.8%
     </text>
     
         <circle
@@ -279,7 +279,7 @@
       font-weight="500"
       fill="#f0f6fc"
       text-anchor="start">
-      JavaScript
+      CSS
     </text>
     
     <text
@@ -290,7 +290,7 @@
       font-weight="500"
       fill="#8b949e"
       text-anchor="end">
-      1.8%
+      2.4%
     </text>
     
         <circle
@@ -318,7 +318,7 @@
       font-weight="500"
       fill="#8b949e"
       text-anchor="end">
-      3.3%
+      3.1%
     </text>
     
     <rect
@@ -759,7 +759,7 @@
       font-weight="700"
       fill="#f0f6fc"
       text-anchor="start">
-      16
+      17
     </text>
     
     <text
@@ -863,7 +863,7 @@
       font-weight="700"
       fill="#f0f6fc"
       text-anchor="start">
-      4
+      5
     </text>
     
     <text
@@ -3902,7 +3902,7 @@
               width="10"
               height="10"
               rx="2"
-              fill="#0e4429"/>
+              fill="#26a641"/>
             
     <text
       x="91"
@@ -4044,7 +4044,7 @@
       font-weight="500"
       fill="#8b949e"
       text-anchor="start">
-      Total contributions: 31
+      Total contributions: 34
     </text>
     
     <rect
@@ -4142,7 +4142,7 @@
       font-weight="700"
       fill="#f0f6fc"
       text-anchor="middle">
-      31
+      34
     </text>
     
     <text
@@ -4222,7 +4222,7 @@
       font-weight="700"
       fill="#f0f6fc"
       text-anchor="start">
-      4
+      5
     </text>
     
     <rect
@@ -4286,7 +4286,7 @@
       font-weight="700"
       fill="#f0f6fc"
       text-anchor="start">
-      16
+      17
     </text>
     
     <text
@@ -4422,7 +4422,7 @@
       font-weight="400"
       fill="#8b949e"
       text-anchor="start">
-      Live GitHub data • Updated 09 Sep 2026, 15:13 UTC
+      Live GitHub data • Updated 09 Sep 2026, 18:34 UTC
     </text>
     
     <text
