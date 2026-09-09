@@ -6,17 +6,13 @@
 
 <img src="https://readme-typing-svg.demolab.com?font=Courier+Prime&size=18&duration=1800&pause=900&color=FFFFFF&center=true&vCenter=true&width=500&height=40&lines=%3C%2F%3E+Build;%3C%2F%3E+Learn;%3C%2F%3E+Experiment;%3C%2F%3E+Repeat." alt="Typing">
 
-<br>
 
-<a href="#about-me">ABOUT ME</a>
-&nbsp;&nbsp;•&nbsp;&nbsp;
-<a href="#github-dashboard">GITHUB DASHBOARD</a>
-&nbsp;&nbsp;•&nbsp;&nbsp;
-<a href="#contact">CONTACT</a>
+
+
 
 </div>
 
-<br>
+
 
 <!-- ========================================================= -->
 <!--                        ABOUT ME                           -->
@@ -105,21 +101,16 @@ behind the scenes.
 </tr>
 </table>
 
-<br>
+
 
 <!-- ========================================================= -->
 <!--                    GITHUB DASHBOARD                       -->
 <!-- ========================================================= -->
 
-<h2 align="center" id="github-dashboard">⚙ GitHub Dashboard</h2>
 
-<hr>
 
-<p align="center">
-<b>Automatically refreshed GitHub profile analytics</b>
-</p>
 
-<br>
+
 
 <p align="center">
 <img
