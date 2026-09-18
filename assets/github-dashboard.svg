@@ -982,7 +982,7 @@
               width="10"
               height="10"
               rx="2"
-              fill="#161b22"/>
+              fill="#006d32"/>
             
             <rect
               x="55"
@@ -990,19 +990,11 @@
               width="10"
               height="10"
               rx="2"
-              fill="#006d32"/>
-            
-            <rect
-              x="55"
-              y="819"
-              width="10"
-              height="10"
-              rx="2"
               fill="#161b22"/>
             
             <rect
               x="55"
-              y="831"
+              y="819"
               width="10"
               height="10"
               rx="2"
@@ -3904,6 +3896,14 @@
               rx="2"
               fill="#161b22"/>
             
+            <rect
+              x="679"
+              y="855"
+              width="10"
+              height="10"
+              rx="2"
+              fill="#161b22"/>
+            
     <text
       x="79"
       y="775"
@@ -4422,7 +4422,7 @@
       font-weight="400"
       fill="#8b949e"
       text-anchor="start">
-      Live GitHub data • Updated 17 Sep 2026, 21:19 UTC
+      Live GitHub data • Updated 18 Sep 2026, 00:15 UTC
     </text>
     
     <text
