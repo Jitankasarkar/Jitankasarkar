@@ -1009,14 +1009,6 @@
               fill="#161b22"/>
             
             <rect
-              x="55"
-              y="843"
-              width="10"
-              height="10"
-              rx="2"
-              fill="#161b22"/>
-            
-            <rect
               x="67"
               y="795"
               width="10"
@@ -3904,17 +3896,14 @@
               rx="2"
               fill="#161b22"/>
             
-    <text
-      x="55"
-      y="775"
-      font-family="Inter,Segoe UI,Arial,sans-serif"
-      font-size="11px"
-      font-weight="500"
-      fill="#8b949e"
-      text-anchor="start">
-      Oct
-    </text>
-    
+            <rect
+              x="679"
+              y="843"
+              width="10"
+              height="10"
+              rx="2"
+              fill="#161b22"/>
+            
     <text
       x="91"
       y="775"
@@ -4034,6 +4023,17 @@
       fill="#8b949e"
       text-anchor="start">
       Sep
+    </text>
+    
+    <text
+      x="667"
+      y="775"
+      font-family="Inter,Segoe UI,Arial,sans-serif"
+      font-size="11px"
+      font-weight="500"
+      fill="#8b949e"
+      text-anchor="start">
+      Oct
     </text>
     
     <text
@@ -4422,7 +4422,7 @@
       font-weight="400"
       fill="#8b949e"
       text-anchor="start">
-      Live GitHub data • Updated 07 Oct 2026, 20:35 UTC
+      Live GitHub data • Updated 08 Oct 2026, 00:58 UTC
     </text>
     
     <text
